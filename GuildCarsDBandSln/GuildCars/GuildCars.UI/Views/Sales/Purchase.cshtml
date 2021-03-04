@@ -1,0 +1,197 @@
+﻿@model GuildCars.UI.Models.SalesPurchaseViewModel
+
+@{
+    ViewBag.Title = "Purchase";
+}
+
+<br />
+<h2>Purchase Vehicle</h2>
+<div class="bigbox">
+    <div class="row make-model">
+        <div>
+            <h3>@Model.InventoryDetails.Year @Model.InventoryDetails.Make @Model.InventoryDetails.Model</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col details-pic">
+            <img class="featureimg" src="@Url.Content("~/Images/" + Model.InventoryDetails.ImageFileName)" />
+        </div>
+        <div class="col">
+            <p>
+                <strong>Body Style: </strong>
+                @Model.InventoryDetails.BodyStyleName
+            </p>
+            <p>
+                <strong>Trans: </strong>
+                @Model.InventoryDetails.TransmissionName
+            </p>
+            <p>
+                <strong>Color: </strong>
+                @Model.InventoryDetails.ColorName
+            </p>
+        </div>
+        <div class="col">
+            <p>
+                <strong>Interior: </strong>
+                @Model.InventoryDetails.InteriorName
+            </p>
+            <p>
+                <strong>Mileage: </strong>
+                @Model.InventoryDetails.Mileage
+            </p>
+            <p>
+                <strong>VIN #: </strong>
+                @Model.InventoryDetails.Vin
+            </p>
+        </div>
+        <div class="col">
+            <p>
+                <strong>Sale Price: </strong>
+                @Model.InventoryDetails.SalePrice.ToString("c")
+            </p>
+            <p>
+                <strong>MSRP: </strong>
+                @Model.InventoryDetails.MSRP.ToString("c")
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-9">
+            <p>
+                <strong>Description: </strong>
+                @Model.InventoryDetails.Description
+            </p>
+        </div>
+    </div>
+</div>
+
+<h2>Sales Information</h2>
+<p>@ViewBag.result</p>
+@using (Html.BeginForm("Purchase", "Sales", FormMethod.Post, new { id = "frmPurchase" }))
+{
+    @Html.HiddenFor(m => m.InventoryDetails.InventoryId)
+    @Html.HiddenFor(m => m.InventoryDetails.SalePrice)
+    @Html.HiddenFor(m => m.InventoryDetails.MSRP)
+    <div class=" row">
+        <div class="col form-group">
+            <label>Name</label>
+            @Html.ValidationMessageFor(m => m.SalesPurchase.Name)
+            <p>@Html.TextBoxFor(m => m.SalesPurchase.Name, new { @class = "w-100", required = "required" })</p>
+        </div>
+        <div class="col form-group">
+            <label>Phone</label>
+            @Html.ValidationMessageFor(m => m.SalesPurchase.Phone)
+            <p>@Html.TextBoxFor(m => m.SalesPurchase.Phone, new { @class = "w-100", id = "phoneId" })</p>
+        </div>
+    </div>
+    <div class=" row">
+        <div class="col-6 form-group">
+            <label>Email</label>
+            @Html.ValidationMessageFor(m => m.SalesPurchase.Email)
+            <p>@Html.TextBoxFor(m => m.SalesPurchase.Email, new { @class = "w-100", id = "emailId", type = "email" })</p>
+        </div>
+    </div>
+    <div class=" row">
+        <div class="col form-group">
+            <label>Street 1</label>
+            @Html.ValidationMessageFor(m => m.SalesPurchase.Street1)
+            <p>@Html.TextBoxFor(m => m.SalesPurchase.Street1, new { @class = "w-100", required = "required" })</p>
+        </div>
+        <div class="col form-group">
+            <label>Street 2</label>
+            <p>@Html.TextBoxFor(m => m.SalesPurchase.Street2, new { @class = "w-100" })</p>
+        </div>
+    </div>
+    <div class=" row">
+        <div class="col form-group">
+            <label>City</label>
+            @Html.ValidationMessageFor(m => m.SalesPurchase.City)
+            <p>@Html.TextBoxFor(m => m.SalesPurchase.City, new { @class = "w-100" })</p>
+        </div>
+        <div class="col form-group">
+            <label>State</label>
+            @Html.ValidationMessageFor(m => m.SalesPurchase.State)
+            <p>@Html.DropDownList("SalesPurchase.State", new SelectList(Model.States, "StateId", "StateId"), new { @class = "w-100" })</p>
+        </div>
+    </div>
+    <div class=" row">
+        <div class="col-6 form-group">
+            <label>Zipcode</label>
+            @Html.ValidationMessageFor(m => m.SalesPurchase.ZipCode)
+            <p>@Html.TextBoxFor(m => m.SalesPurchase.ZipCode, "{0:#.#}", new { @class = "w-100", type = "number", required = "required", id = "zipcodeValue" })</p>
+        </div>
+    </div>
+    <hr />
+    <div class=" row">
+        <div class="col form-group">
+            <label>Purchase Price</label>
+            @Html.ValidationMessageFor(m => m.SalesPurchase.PurchasePrice)
+            <p>@Html.TextBoxFor(m => m.SalesPurchase.PurchasePrice, "{0:#.#}", new { @class = "w-100", type = "number", min = "1", required = "required", id = "SalePriceValue" })</p>
+        </div>
+        <div class="col form-group">
+            <label>Purchase Type</label>
+            @Html.ValidationMessageFor(m => m.SalesPurchase.PurchaseTypeId)
+            <p>@Html.DropDownList("SalesPurchase.PurchaseTypeId", new SelectList(Model.PurchaseTypes, "PurchaseTypeId", "PurchaseTypeName"), new { @class = "w-100" })</p>
+        </div>
+    </div>
+    if (Model.InventoryDetails.IsSold == false)
+    {
+        <button class="btn btn-dark contactLink" onclick="return checkForm();">Save</button>
+    }
+    if (Model.InventoryDetails.IsSold == true)
+    {
+        <p>SOLD!</p>
+    }
+}
+
+@section Scripts
+{
+    <script>
+
+        function checkForm() {
+            var msrpString = @Model.InventoryDetails.MSRP.ToString();
+            var listedSalePrice = @Model.InventoryDetails.SalePrice.ToString();
+            var saleString = $('#SalePriceValue').val();
+
+            var msrp = parseInt(msrpString);
+            var salePrice = parseInt(saleString);
+            var listedPrice = parseInt(listedSalePrice);
+
+            var listedPercent = (listedPrice * .95);
+
+            var email = $('#emailId').val();
+            var phone = $('#phoneId').val();
+
+            var zip = $('#zipcodeValue').val();
+            var zipLength = zip.length;
+
+            if (salePrice > msrp) {
+                alert('Sale price cannot exceed MSRP');
+                return false;
+            }
+
+            if (listedPercent > salePrice) {
+                alert('Purchase price cannot be less than 95% of sale price')
+                return false;
+            }
+
+            if (email.length == 0 && phone.length == 0) {
+                alert('Either phone or email must be provided');
+                return false;
+            }
+
+            if (zipLength != 5) {
+                alert('Zipcode must be 5 digits');
+                return false;
+            }
+
+            return true;
+        }
+
+    </script>
+}
+

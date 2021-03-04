@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D4116685-B367-4A3F-A68B-E6910982CFDD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GuildCars.Models</RootNamespace>
+    <AssemblyName>GuildCars.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueriesModels\AdminModelTable.cs" />
+    <Compile Include="QueriesModels\AdminUsers.cs" />
+    <Compile Include="QueriesModels\FeaturedVehicles.cs" />
+    <Compile Include="QueriesModels\IndexViewModel.cs" />
+    <Compile Include="QueriesModels\InventoryDetailsView.cs" />
+    <Compile Include="QueriesModels\InventoryNewUsedView.cs" />
+    <Compile Include="QueriesModels\InventorySearchParameters.cs" />
+    <Compile Include="QueriesModels\Prices.cs" />
+    <Compile Include="QueriesModels\PricesYears.cs" />
+    <Compile Include="QueriesModels\ReportInventory.cs" />
+    <Compile Include="QueriesModels\ReportSales.cs" />
+    <Compile Include="QueriesModels\ReportSalesSearchParameters.cs" />
+    <Compile Include="QueriesModels\SalesView.cs" />
+    <Compile Include="QueriesModels\Years.cs" />
+    <Compile Include="TableModels\BodyStyle.cs" />
+    <Compile Include="TableModels\Color.cs" />
+    <Compile Include="TableModels\ContactUs.cs" />
+    <Compile Include="TableModels\Interior.cs" />
+    <Compile Include="TableModels\InventoryDetails.cs" />
+    <Compile Include="TableModels\Makes.cs" />
+    <Compile Include="TableModels\CarModels.cs" />
+    <Compile Include="TableModels\PurchaseType.cs" />
+    <Compile Include="TableModels\Role.cs" />
+    <Compile Include="TableModels\SalesPurchase.cs" />
+    <Compile Include="TableModels\Specials.cs" />
+    <Compile Include="TableModels\States.cs" />
+    <Compile Include="TableModels\Transmission.cs" />
+    <Compile Include="TableModels\CarType.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

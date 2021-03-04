@@ -1,0 +1,108 @@
+﻿@model GuildCars.Models.QueriesModels.ReportSales
+
+@{
+    ViewBag.Title = "Sales";
+}
+
+<br />
+<h2>Sales Report</h2>
+<br />
+
+<div class="bigbox col-md-12">
+    <div class="row">
+        <h3 class="body-content">Filters</h3>
+    </div>
+    <div class="row">
+        <form class="form-inline" id="searchForm">
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="form-group">
+                    <label for="UserId">User</label>
+                    @Html.DropDownList("userId", new SelectList(Model.Users, "UserId", "FullName"), "-All-")
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="form-group">
+                    <label for="FromDate">From Date</label>
+                    @Html.TextBoxFor(m => m.FromDate, new { type = "Date", id = "fromDate" })
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="form-group">
+                    <label for="FromDate">To Date</label>
+                    @Html.TextBoxFor(m => m.ToDate, new { type = "Date", id = "toDate" })
+                </div>
+            </div>
+            <div class="col-5 justify-content-center">
+                <button type="submit" class="btn btn-dark contactLink w-100">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+<br/>
+<div class="row col-md-12">
+    <h3>Search Results</h3>
+</div>
+<table class="table table-dark" style="display:none" id="salesTable">
+    <thead>
+        <tr>
+            <th scope="col">User</th>
+            <th scope="col">Total Sales</th>
+            <th scope="col">Total Vehicles</th>
+        </tr>
+    </thead>
+    <tbody id="searchResults">
+
+    </tbody>
+
+</table>
+
+
+    @section Scripts
+{
+        <script>
+            $(document).ready(function () {
+                $('#searchForm').submit(function (e) {
+                    search();
+                    return false;
+                });
+            });
+
+            function search() {
+                $('#salesTable').show();
+                var params;
+                var searchResults = $('#searchResults');
+
+                params = 'userId=' + $('#userId').val() + '&fromDate=' + $('#fromDate').val() + '&toDate=' + $('#toDate').val();
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://localhost:44359/api/reports/sales?' + params,
+                    success: function (results) {
+                        searchResults.empty();
+
+                        $.each(results, function (index, salesList) {
+                            var firstName = salesList.FirstName;
+                            var lastName = salesList.LastName;
+                            var totalSales = salesList.TotalSales;
+                            var totalVehicles = salesList.TotalVehicles;
+
+                            var formatter = new Intl.NumberFormat('en-US', {
+                                style: 'currency',
+                                currency: 'USD',
+                            });
+
+                            var row = '<tr><td>' + firstName + ' ' + lastName + '</td>';
+                            row += '<td>' + formatter.format(totalSales) + '</td>';
+                            row += '<td>' + totalVehicles + '</td></tr>';
+
+                            searchResults.append(row);
+                        });
+                    },
+                    error: function () {
+                        alert('Error performing search, try again later')
+                    }
+                });
+            };
+        </script>
+    }
+

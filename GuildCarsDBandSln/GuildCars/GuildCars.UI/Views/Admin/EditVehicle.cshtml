@@ -1,0 +1,181 @@
+﻿@model GuildCars.UI.Models.AdminEditVehicleViewModel
+
+@{
+    ViewBag.Title = "EditVehicle";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Admin"))
+    {
+        <br />
+        <h2>Edit Vehicle</h2>
+        <p>@ViewBag.result</p>
+        using (Html.BeginForm("EditVehicle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmAddVehicle" }))
+        {
+            @Html.ValidationSummary();
+            @Html.HiddenFor(m => m.InventoryDetails.InventoryId)
+            <div class=" row">
+                <div class="col form-group">
+                    <label>Make</label>
+                    <p>@Html.DropDownList("InventoryDetails.MakeId", new SelectList(Model.Makes, "MakeId", "Make"), new { onchange = "getModelList(this.value)", @class = "w-100", required = "required", id = "makeList" })</p>
+                </div>
+                <div class="col form-group">
+                    <label>Model</label>
+                    <p><select name="InventoryDetails.ModelId" id="modelDropDown" class="w-100" required="required"></select></p>
+                </div>
+            </div>
+            <div class=" row">
+                <div class="col form-group">
+                    <label>Type</label>
+                    <p>@Html.DropDownList("InventoryDetails.TypeId", new SelectList(Model.CarTypes, "TypeId", "TypeName"), new { @class = "w-100", id = "typeValue" })</p>
+                </div>
+                <div class="col form-group">
+                    <label>Body Style</label>
+                    <p>@Html.DropDownList("InventoryDetails.BodyStyleId", new SelectList(Model.BodyStyles, "BodyStyleId", "BodyStyleName"), new { @class = "w-100" })</p>
+                </div>
+            </div>
+            <div class=" row">
+                <div class="col form-group">
+                    <label>Year</label>
+                    <p>@Html.TextBoxFor(m => m.InventoryDetails.Year, "{0:#.#}", new { @class = "w-100", type = "number", min = "2000", max = "2022", required = "required" })</p>
+                </div>
+                <div class="col form-group">
+                    <label>Transmission</label>
+                    <p>@Html.DropDownList("InventoryDetails.TransmissionId", new SelectList(Model.Transmissions, "TransmissionId", "TransmissionName"), new { @class = "w-100" })</p>
+                </div>
+            </div>
+            <div class=" row">
+                <div class="col form-group">
+                    <label>Color</label>
+                    <p>@Html.DropDownList("InventoryDetails.ColorId", new SelectList(Model.Colors, "ColorId", "ColorName"), new { @class = "w-100" })</p>
+                </div>
+                <div class="col form-group">
+                    <label>Interior</label>
+                    <p>@Html.DropDownList("InventoryDetails.InteriorId", new SelectList(Model.Interiors, "InteriorId", "InteriorName"), new { @class = "w-100" })</p>
+                </div>
+            </div>
+            <div class=" row">
+                <div class="col form-group">
+                    <label>Mileage</label>
+                    <p>@Html.TextBoxFor(m => m.InventoryDetails.Mileage, new { @class = "w-100", type = "number", required = "required", id = "mileageValue" })</p>
+                </div>
+                <div class="col form-group">
+                    <label>Vin #</label>
+                    <p>@Html.TextBoxFor(m => m.InventoryDetails.Vin, new { @class = "w-100", required = "required" })</p>
+                </div>
+            </div>
+            <div class=" row">
+                <div class="col form-group">
+                    <label>MSRP</label>
+                    <p>@Html.TextBoxFor(m => m.InventoryDetails.MSRP, "{0:#.#}", new { @class = "w-100", type = "number", min = "1", required = "required", id = "MSRPValue" })</p>
+                </div>
+                <div class="col form-group">
+                    <label>Sale Price</label>
+                    <p>@Html.TextBoxFor(m => m.InventoryDetails.SalePrice, "{0:#.#}", new { @class = "w-100", type = "number", min = "1", required = "required", id = "SalePriceValue" })</p>
+                </div>
+            </div>
+            <div class=" row">
+                <div class="col form-group">
+                    <label>Description</label>
+                    <p>@Html.TextAreaFor(m => m.InventoryDetails.Description, 5, 0, new { @class = "w-100", required = "required" })</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-group">
+                    <label>Image</label>
+                    <p><input id="ImageUpload" name="ImageUpload" type="file" class="w-100" accept=".png,.jpg,.jpeg" /></p>
+                </div>
+            </div>
+            <div class="=row">
+                <div class="col form-group">
+                    <label>
+                        @Html.CheckBoxFor(m => m.InventoryDetails.IsFeatured) Feature this vehicle
+                    </label>
+                </div>
+            </div>
+            <button id="deleteBtn" class="btn btn-danger contactLink" onclick="return showConfirm();">Delete</button>
+            <button id="cancelBtn" class="btn btn-dark contactLink" style="display:none" onclick="return showEdit();">Cancel</button>
+            <button name="action" value="delete" id="confirmDeleteBtn"class="btn btn-danger contactLink" style="display:none">Confirm Delete</button>
+            <button name="action" value="save" id ="editBtn" class="btn btn-dark contactLink" onclick="return checkForm();">Save</button>
+        }
+
+    }
+}
+ 
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            getModelList($('#makeList').val());
+        });
+
+        function getModelList(params) {
+            $.ajax({
+                type: 'GET',
+                url: 'https://localhost:44359/api/admin/model?makeId=' + params,
+                success: function (results) {
+                    $('#modelDropDown').empty();
+                    $.each(results, function (index, model) {
+                        var row = '<option value="' + model.ModelId + '">' + model.Model + '</option>'
+
+                        $('#modelDropDown').append(row);
+                    });
+                }
+            });
+        };
+
+        function checkForm() {
+            var msrpString = $('#MSRPValue').val();
+            var saleString = $('#SalePriceValue').val();
+
+            var modelDropDown = $('#modelDropDown').val();
+
+            var msrp = parseInt(msrpString);
+            var salePrice = parseInt(saleString);
+
+            var type = $('#typeValue').val();
+            var milesString = $('#mileageValue').val();
+            var miles = parseInt(milesString);
+
+            if (salePrice > msrp) {
+                alert('Sale price cannot exceed MSRP');
+                return false;
+            }
+
+            if (type === '1' && (miles < 0 || miles > 1000)) {
+                alert('Mileage for new cars must be between 0 and 1000');
+                return false;
+            }
+
+            if (type === '2' && miles < 1000) {
+                alert('Mileage for used cars must be 1000+');
+                return false;
+            }
+
+            if (modelDropDown.length == 0) {
+                alert('Model is required');
+                return false;
+            }
+
+            return true;
+        }
+
+        function showConfirm() {
+            $('#deleteBtn').hide();
+            $('#editBtn').hide();
+            $('#cancelBtn').show();
+            $('#confirmDeleteBtn').show();
+            return false; 
+        }
+
+        function showEdit() {
+            $('#deleteBtn').show();
+            $('#editBtn').show();
+            $('#cancelBtn').hide();
+            $('#confirmDeleteBtn').hide();
+            return false;
+        }
+
+    </script>
+}

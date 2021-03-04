@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<h2>Admin</h2>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>@Html.ActionLink("Admin Vehicles", "Vehicles", "Admin", null, null)</p>
+    <p>@Html.ActionLink("Admin Users", "Users", "Admin", null, null)</p>
+    <p>@Html.ActionLink("Admin Makes", "Makes", "Admin", null, null)</p>
+    <p>@Html.ActionLink("Admin Models", "Models", "Admin", null, null)</p>
+    <p>@Html.ActionLink("Admin Specials", "Specials", "Admin", null, null)</p>
+    <p>@Html.ActionLink("Admin Reports", "Index", "Reports", null, null)</p>
+}
+

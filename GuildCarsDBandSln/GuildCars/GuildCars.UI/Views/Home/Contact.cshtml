@@ -1,0 +1,80 @@
+﻿@model GuildCars.Models.TableModels.ContactUs
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+<h2 class="specialHeader">Contact Us</h2>
+<div class="row">
+    <div class="col">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="contactForm">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name)
+                    @Html.ValidationMessageFor(m => m.Name)
+                    <p>@Html.TextBoxFor(m => m.Name, new { @class = "form-control", required = "required" })</p>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.ValidationMessageFor(m => m.Email)
+                    <p>@Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "emailValue" })</p>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Phone)
+                    <p>@Html.TextBoxFor(m => m.Phone, new { @class = "form-control", id = "phoneValue" })</p>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Message)
+                    @Html.ValidationMessageFor(m => m.Message)
+                    <p><textarea class="form-control" cols="20" id="Message" name="Message" required="required" rows="2">@ViewBag.Vin</textarea></p>
+                </div>
+                <button type="submit" class="btn btn-dark contactLink" onclick="return checkForm();">Submit</button>
+                <br />
+                <p>@ViewBag.result</p>
+            </div>
+        }
+    </div>
+
+    <div class="col">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2816.2499304733865!2d-93.14680568404864!3d45.10100137909836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52b3287a17628b99%3A0x586c2976655aad7d!2s1030%20Lake%20Beach%20Dr%2C%20Shoreview%2C%20MN%2055126!5e0!3m2!1sen!2sus!4v1613058258057!5m2!1sen!2sus" width="300" height="225" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <table>
+            <tr>
+                <td>1030 Lake Beach Dr</td>
+            </tr>
+            <tr>
+                <td>Shoreview, MN 551256</td>
+            </tr>
+        </table>
+        <br />
+        <table>
+            <tr>
+                <td>Sales: 111-111-1111</td>
+            </tr>
+            <tr>
+                <td>Service: 111-111-1112</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        function checkForm() {
+            var email = $('#emailValue').val();
+            var phone = $('#phoneValue').val();
+
+            if (email.length == 0 && phone.length == 0) {
+                alert('Either email or phone must be provided');
+                return false;
+            }
+
+            return true;
+        }
+
+    </script>
+}
+

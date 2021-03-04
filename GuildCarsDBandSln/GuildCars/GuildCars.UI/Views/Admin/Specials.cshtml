@@ -1,0 +1,101 @@
+﻿@model GuildCars.UI.Models.AdminSpecialsViewModel
+
+@{
+    ViewBag.Title = "Specials";
+}
+
+<br />
+<h2>Specials</h2>
+<div class="bigbox">
+    <br />
+    @using (Html.BeginForm("Specials", "Admin", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-2 text-right">
+                <strong><label>Title</label></strong>
+            </div>
+            <div class="col-6">
+                @Html.TextBoxFor(m => m.SpecialToAdd.Title, new { @class = "w-100", required = "required" })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-2 text-right">
+                <strong><label>Description</label></strong>
+            </div>
+            <div class="col-6">
+                @Html.TextAreaFor(m => m.SpecialToAdd.Description, new { @class = "w-100", required = "required", rows = "4" })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-2 offset-2">
+                <button name="action" value="save" id="SaveBtn" class="btn btn-dark contactLink">Save</button>
+            </div>
+        </div>
+    }
+
+</div>
+<br />
+<br />
+    @{int i = 1;}
+    @foreach (var special in Model.SpecialsList)
+    {
+        using (Html.BeginForm("Specials", "Admin", FormMethod.Post))
+        {
+            @Html.Hidden("DeleteId", special.SpecialId)
+            <div class="specialborder">
+                <div class="row">
+                    <img class="col-md-2" src="@Url.Content("~/Images/" + special.ImageFileName)" />
+                    <div class="col-md-10">
+                        <p>
+                            <strong>@special.Title</strong>
+                            <button id="@("deleteBtn"+i)" class="btn btn-danger contactLink float-right specialDelete" onclick="return showConfirm(this.id);">Delete</button>
+                            <button id="@("cancelBtn"+i)" class="btn btn-dark contactLink float-right specialDelete" style="display:none" onclick="return showDelete(this.id);">Cancel</button>
+                            <button name="action" value="delete" id="@("confirmDeleteBtn"+i)" class="btn btn-danger contactLink float-right specialDelete" style="display:none">Confirm Delete</button>
+                        </p>
+                        <p>@special.Description</p>
+                        <div style="display:none">@(i++)</div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
+
+    @section Scripts
+{
+        <script>
+
+            function showConfirm(id) {
+                var last = id.slice(-1);
+
+                var deleteBtnId = "deleteBtn" + last;
+                $('#' + deleteBtnId).hide();
+
+                var cancelBtnId = "cancelBtn" + last;
+                $('#' + cancelBtnId).show();
+
+                var confirmDeleteBtnId = "confirmDeleteBtn" + last;
+                $('#' + confirmDeleteBtnId).show();
+
+                return false;
+            }
+
+            function showDelete(id) {
+                var last = id.slice(-1);
+
+                var deleteBtnId = "deleteBtn" + last;
+                $('#' + deleteBtnId).show();
+
+                var cancelBtnId = "cancelBtn" + last;
+                $('#' + cancelBtnId).hide();
+
+                var confirmDeleteBtnId = "confirmDeleteBtn" + last;
+                $('#' + confirmDeleteBtnId).hide();
+
+                return false;
+            }
+
+        </script>
+    }

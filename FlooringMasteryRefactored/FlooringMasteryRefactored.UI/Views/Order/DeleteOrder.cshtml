@@ -1,0 +1,51 @@
+﻿@model FlooringMasteryRefactored.Models.QueriesModels.DisplayOrdersModel
+
+@{
+    ViewBag.Title = "DeleteOrder";
+}
+
+<h2>Delete Order</h2>
+@using (Html.BeginForm("DeleteOrder", "Order", FormMethod.Post, new { id = "frmSaveOrder" }))
+{
+<div id="prelimOrder">
+    <div class="row">
+        <div class="col form-group">
+            <label>Customer Name</label>
+            <p>@Html.TextBoxFor(m => m.CustomerName, new { @readonly = "readonly" })</p>
+        </div>
+        <div class="col form-group">
+            <label>State Abbreviation</label>
+            <p>@Html.TextBoxFor(m => m.StateAbbreviation, new { @readonly = "readonly" })</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col form-group">
+            <label>Product</label>
+            <p>@Html.TextBoxFor(m => m.ProductName, new { @readonly = "readonly" })</p>
+        </div>
+        <div class="col form-group">
+            <label>Materials</label>
+            <p>@Html.TextBoxFor(m => m.MaterialCost, new { @readonly = "readonly" })</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col form-group">
+            <label>Labor</label>
+            <p>@Html.TextBoxFor(m => m.LaborCost, new { @readonly = "readonly" })</p>
+        </div>
+        <div class="col form-group">
+            <label>Tax</label>
+            <p>@Html.TextBoxFor(m => m.Tax, new { @readonly = "readonly" })</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col form-group">
+            <label>Total</label>
+            <p>@Html.TextBoxFor(m => m.Total, new { @readonly = "readonly" })</p>
+        </div>
+    </div>
+    <button name="action" value="delete" class="btn btn-danger contactLink">Delete</button>
+    <button type="submit" name="action" value="cancel" class="btn btn-dark contactLink">Cancel</button>
+</div>
+}
+

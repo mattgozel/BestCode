@@ -1,0 +1,101 @@
+﻿@model FlooringMasteryRefactored.UI.Models.AddOrderViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Order</h2>
+<p>@ViewBag.result</p>
+@if (Model.Order.Total == 0)
+{
+    using (Html.BeginForm("EditOrder", "Order", FormMethod.Post, new { id = "frmEditOrder" }))
+    {
+        @Html.ValidationSummary();
+        @Html.HiddenFor(m => m.Order.OrderNumber)
+        <div class=" row">
+            <div class="col form-group">
+                <label>Customer Name</label>
+                <p>@Html.TextBoxFor(m => m.Order.CustomerName, new { @class = "w-100", required = "required" })</p>
+            </div>
+            <div class="col form-group">
+                <label>State</label>
+                <p>@Html.DropDownList("Order.StateAbbreviation", new SelectList(Model.Taxes, "StateAbbreviation", "StateName"), new { @class = "w-100", id = "stateValue" })</p>
+            </div>
+        </div>
+        <div class=" row">
+            <div class="col form-group">
+                <label>State</label>
+                <p>@Html.DropDownList("Order.ProductId", new SelectList(Model.Products, "ProductId", "ProductName"), new { @class = "w-100", id = "productValue" })</p>
+            </div>
+            <div class="col form-group">
+                <label>Area</label>
+                <p>@Html.TextBoxFor(m => m.Order.Area, "{0:#.#}", new { @class = "w-100", type = "number", required = "required", id = "areaValue" })</p>
+            </div>
+        </div>
+        <button name="action" value="editPrelim" class="btn btn-dark contactLink" onclick="return createPrelim();">Edit Order</button>
+    }
+}
+else
+{
+    using (Html.BeginForm("EditOrder", "Order", FormMethod.Post, new { id = "frmSaveEdit" }))
+    {
+        @Html.HiddenFor(m => m.Order.Area)
+        @Html.HiddenFor(m => m.Order.OrderNumber)
+        <div id="prelimOrder">
+            <div class="row">
+                <div class="col form-group">
+                    <label>Customer Name</label>
+                    <p>@Html.TextBoxFor(m => m.Order.CustomerName, new { @readonly = "readonly" })</p>
+                </div>
+                <div class="col form-group">
+                    <label>State Abbreviation</label>
+                    <p>@Html.TextBoxFor(m => m.Order.StateAbbreviation, new { @readonly = "readonly" })</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-group">
+                    <label>Product</label>
+                    <p>@Html.TextBoxFor(m => m.SelectedProductName, new { @readonly = "readonly" })</p>
+                </div>
+                <div class="col form-group">
+                    <label>Materials</label>
+                    <p>@Html.TextBoxFor(m => m.Order.MaterialCost, new { @readonly = "readonly" })</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-group">
+                    <label>Labor</label>
+                    <p>@Html.TextBoxFor(m => m.Order.LaborCost, new { @readonly = "readonly" })</p>
+                </div>
+                <div class="col form-group">
+                    <label>Tax</label>
+                    <p>@Html.TextBoxFor(m => m.Order.Tax, new { @readonly = "readonly" })</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-group">
+                    <label>Total</label>
+                    <p>@Html.TextBoxFor(m => m.Order.Total, new { @readonly = "readonly" })</p>
+                </div>
+            </div>
+            <button name="action" value="saveEdit" class="btn btn-dark contactLink">Save</button>
+            <button type="submit" name="action" value="cancelEdit" class="btn btn-danger contactLink">Cancel</button>
+        </div>
+    }
+}
+
+@section Scripts
+{
+    <script>
+        function createPrelim() {
+            var area = $('#areaValue').val();
+
+            if (area < 100) {
+                alert('The minimum area is 100');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+}

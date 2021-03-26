@@ -1,0 +1,18 @@
+﻿@model FlooringMasteryRefactored.UI.Models.EditViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Order Search</h2>
+@using (Html.BeginForm("Edit", "Order", FormMethod.Post, new { id = "frmEditOrder" }))
+{
+<div class=" row">
+    <div class="col form-group">
+        <label>Order Number</label>
+        <p>@Html.DropDownList("id", new SelectList(Model.Orders, "OrderNumber", "OrderNumber"), new { @class = "w-100", id = "orderValue" })</p>
+    </div>
+</div>
+<button class="btn btn-dark contactLink">Select</button>
+}
+

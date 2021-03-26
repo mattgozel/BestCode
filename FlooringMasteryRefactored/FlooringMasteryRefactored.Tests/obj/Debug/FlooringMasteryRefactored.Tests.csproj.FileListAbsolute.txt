@@ -1,0 +1,14 @@
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Tests\bin\Debug\FlooringMasteryRefactored.Tests.dll
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Tests\bin\Debug\FlooringMasteryRefactored.Tests.pdb
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Tests\bin\Debug\FlooringMasteryRefactored.Data.dll
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Tests\bin\Debug\FlooringMasteryRefactored.Models.dll
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Tests\bin\Debug\nunit.framework.dll
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Tests\bin\Debug\FlooringMasteryRefactored.Data.pdb
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Tests\bin\Debug\FlooringMasteryRefactored.Models.pdb
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Tests\bin\Debug\nunit.framework.xml
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Tests\obj\Debug\FlooringMasteryRefactored.Tests.csprojAssemblyReference.cache
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Tests\obj\Debug\FlooringMasteryRefactored.Tests.csproj.CoreCompileInputs.cache
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Tests\obj\Debug\FlooringMasteryRefactored.Tests.csproj.CopyComplete
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Tests\obj\Debug\FlooringMasteryRefactored.Tests.dll
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Tests\obj\Debug\FlooringMasteryRefactored.Tests.pdb
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Tests\bin\Debug\FlooringMasteryRefactored.Tests.dll.config

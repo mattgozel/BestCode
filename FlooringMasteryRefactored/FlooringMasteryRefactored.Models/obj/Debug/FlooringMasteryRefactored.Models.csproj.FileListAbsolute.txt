@@ -1,0 +1,6 @@
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Models\bin\Debug\FlooringMasteryRefactored.Models.dll
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Models\bin\Debug\FlooringMasteryRefactored.Models.pdb
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Models\obj\Debug\FlooringMasteryRefactored.Models.csprojAssemblyReference.cache
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Models\obj\Debug\FlooringMasteryRefactored.Models.csproj.CoreCompileInputs.cache
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Models\obj\Debug\FlooringMasteryRefactored.Models.dll
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Models\obj\Debug\FlooringMasteryRefactored.Models.pdb

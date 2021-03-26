@@ -1,0 +1,18 @@
+﻿@model FlooringMasteryRefactored.UI.Models.EditViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Order Search</h2>
+@using (Html.BeginForm("Delete", "Order", FormMethod.Post, new { id = "frmDeleteOrder" }))
+{
+    <div class=" row">
+        <div class="col form-group">
+            <label>Order Number</label>
+            <p>@Html.DropDownList("id", new SelectList(Model.Orders, "OrderNumber", "OrderNumber"), new { @class = "w-100", id = "orderValue" })</p>
+        </div>
+    </div>
+    <button class="btn btn-dark contactLink">Select</button>
+}
+

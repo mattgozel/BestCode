@@ -1,0 +1,9 @@
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Data\bin\Debug\FlooringMasteryRefactored.Data.dll
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Data\bin\Debug\FlooringMasteryRefactored.Data.pdb
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Data\bin\Debug\FlooringMasteryRefactored.Models.dll
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Data\bin\Debug\FlooringMasteryRefactored.Models.pdb
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Data\obj\Debug\FlooringMasteryRefactored.Data.csprojAssemblyReference.cache
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Data\obj\Debug\FlooringMasteryRefactored.Data.csproj.CoreCompileInputs.cache
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Data\obj\Debug\FlooringMasteryRefactored.Data.csproj.CopyComplete
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Data\obj\Debug\FlooringMasteryRefactored.Data.dll
+C:\Users\repub\source\repos\FlooringMasteryRefactored\FlooringMasteryRefactored.Data\obj\Debug\FlooringMasteryRefactored.Data.pdb

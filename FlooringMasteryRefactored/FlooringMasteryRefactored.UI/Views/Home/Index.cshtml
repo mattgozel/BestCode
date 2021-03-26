@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="jumbotron">
+    <h1>Guild Flooring</h1>
+    <p class="lead">Internal order management system</p>
+</div>
+<div class="bigbox col-md-12">
+    <div class="row">
+        <h3 class="body-content">Search Orders</h3>
+    </div>
+    <div class="row">
+        <form id="searchForm">
+            <div class="form-group col-md-12 d-flex justify-content-center">
+                <input type="date" class="form-control" id="search" placeholder="Enter date" required="required">
+            </div>
+            <div class="col-md-12 d-flex justify-content-center">
+                <button type="submit" class="btn btn-dark contactLink">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row col-md-12">
+    <h2>Orders</h2>
+</div>
+<div>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Order Number</th>
+                <th scope="col">Order Date</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">State</th>
+                <th scope="col">Product</th>
+                <th scope="col">Materials</th>
+                <th scope="col">Labor</th>
+                <th scope="col">Tax</th>
+                <th scope="col">Total</th>
+            </tr>
+        </thead>
+        <tbody id="searchResults">
+        </tbody>
+    </table>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#searchForm').submit(function (e) {
+                search();
+                return false;
+            });
+        });
+
+        function search() {
+            var params;
+            var searchResults = $('#searchResults');
+            var formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            });
+
+            params = 'dateAdded=' + $('#search').val();
+
+            $.ajax({
+                type: 'GET',
+                url: 'https://localhost:44396/api/home/orders/?' + params,
+                success: function (results) {
+                    searchResults.empty();
+
+                    $.each(results, function (index, order) {
+                        var OrderNumber = order.OrderNumber;
+                        var DateAdded = order.DateAdded;
+                        var CustomerName = order.CustomerName;
+                        var StateAbbreviation = order.StateAbbreviation;
+                        var ProductName = order.ProductName;
+                        var MaterialCost = formatter.format(order.MaterialCost);
+                        var LaborCost = formatter.format(order.LaborCost);
+                        var Tax = formatter.format(order.Tax);
+                        var Total = formatter.format(order.Total);
+
+                        var row = '<tr><td>' + OrderNumber + '</td><td>' + DateAdded + '</td><td>' + CustomerName + '</td>';
+                        row += '<td>' + StateAbbreviation + '</td><td>' + ProductName + '</td><td>' + MaterialCost + '</td>';
+                        row += '<td>' + LaborCost + '</td><td>' + Tax + '</td><td>' + Total + '</td></tr>';
+
+                        searchResults.append(row);
+                    });
+                },
+                error: function () {
+                    alert('Error performing search, try again later')
+                }
+                });
+            };
+    </script>
+}

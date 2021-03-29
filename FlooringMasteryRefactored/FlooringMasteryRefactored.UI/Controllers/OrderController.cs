@@ -91,6 +91,7 @@ namespace FlooringMasteryRefactored.UI.Controllers
             model.Products = productRepo.GetAll();
             model.Taxes = taxRepo.GetAll();
             model.Order = orderRepo.GetById(id);
+            ViewBag.total = model.Order.Total;
             model.Order.Total = 0;
 
             return View(model);

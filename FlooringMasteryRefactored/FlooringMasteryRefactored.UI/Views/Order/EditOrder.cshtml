@@ -8,6 +8,7 @@
 <p>@ViewBag.result</p>
 @if (Model.Order.Total == 0)
 {
+    Model.Order.Total = ViewBag.total;
     using (Html.BeginForm("EditOrder", "Order", FormMethod.Post, new { id = "frmEditOrder" }))
     {
         @Html.ValidationSummary();

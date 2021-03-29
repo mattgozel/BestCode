@@ -1,5 +1,6 @@
 ﻿using FlooringMasteryRefactored.Data.ADO;
 using FlooringMasteryRefactored.Data.Interfaces;
+using FlooringMasteryRefactored.Data.MockRepo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace FlooringMasteryRefactored.Data.Factories
             {
                 case "PROD":
                     return new OrdersRepositoryADO();
+                case "Test":
+                    return new OrdersRepositoryInMemory();
                 default:
                     throw new Exception("Could not find valid Mode configuration value.");
             }

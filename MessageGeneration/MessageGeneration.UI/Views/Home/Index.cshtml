@@ -1,0 +1,50 @@
+﻿@model MessageGeneration.UI.Models.HomePageViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Message Generation</h1>
+    <p class="lead">Easily create and use custom messages to connect with clients today!</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Getting started</h2>
+        <p>
+            You can use the form below to create a custom message using our pre-selected templates or click on "Create Message" at the top of the page to craft a template of your own!
+        </p>
+    </div>
+</div>
+
+<div class="row bigbox">
+    <h2 class="col-md-12">Message</h2>
+    <br />
+    @if (Model.CreatedMessage != null)
+    {
+        <p>@Model.CreatedMessage</p>
+    }
+</div>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "createMessage" }))
+{
+    @Html.ValidationSummary();
+    <div class=" row">
+        <div class="col form-group">
+            <label>Message Template</label>
+            <p>@Html.DropDownList("SelectedMessageId", new SelectList(Model.Messages, "MessageId", "MessageTitle"), new { @class = "w-100", required = "required" })</p>
+        </div>
+        <div class="col form-group">
+            <label>Company</label>
+            <p>@Html.DropDownList("SelectedCompanyId", new SelectList(Model.Companies, "Id", "Company"), new { @class = "w-100", required = "required" })</p>
+        </div>
+    </div>
+    <div class=" row">
+        <div class="col form-group">
+            <label>Guest</label>
+            <p>@Html.DropDownList("SelectedGuestId", new SelectList(Model.Guests, "Id", "LastName"), new { @class = "w-100", required = "required" })</p>
+        </div>
+    </div>
+    <button class="btn btn-dark contactLink">View Message</button>
+}

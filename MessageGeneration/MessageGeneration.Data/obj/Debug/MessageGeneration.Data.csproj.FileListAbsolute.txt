@@ -1,0 +1,16 @@
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\bin\Debug\MessageGeneration.Data.dll
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\bin\Debug\MessageGeneration.Data.pdb
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\bin\Debug\MessageGeneration.Models.dll
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\bin\Debug\Newtonsoft.Json.dll
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\bin\Debug\MessageGeneration.Models.pdb
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\bin\Debug\Newtonsoft.Json.xml
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\obj\Debug\MessageGeneration.Data.csprojAssemblyReference.cache
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\obj\Debug\MessageGeneration.Data.csproj.CoreCompileInputs.cache
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\obj\Debug\MessageGeneration.Data.csproj.CopyComplete
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\obj\Debug\MessageGeneration.Data.dll
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\obj\Debug\MessageGeneration.Data.pdb
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\bin\Debug\JSONFiles\MessageTemplates.JSON
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\obj\Debug\MessageGeneration.Data.Properties.Resources.resources
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\obj\Debug\MessageGeneration.Data.csproj.GenerateResource.cache
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\bin\Debug\JSONFiles\Companies.json
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Data\bin\Debug\JSONFiles\Guests.json

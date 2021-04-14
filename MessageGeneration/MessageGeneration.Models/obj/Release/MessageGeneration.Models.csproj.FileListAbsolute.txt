@@ -1,0 +1,5 @@
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Models\bin\Release\MessageGeneration.Models.dll
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Models\bin\Release\MessageGeneration.Models.pdb
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Models\obj\Release\MessageGeneration.Models.csproj.CoreCompileInputs.cache
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Models\obj\Release\MessageGeneration.Models.dll
+C:\Users\repub\source\repos\MessageGeneration\MessageGeneration.Models\obj\Release\MessageGeneration.Models.pdb

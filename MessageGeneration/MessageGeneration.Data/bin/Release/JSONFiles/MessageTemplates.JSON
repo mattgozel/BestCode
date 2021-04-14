@@ -1,0 +1,17 @@
+[
+  {
+    "messageId": "1",
+    "messageTitle": "hotelGreeting",
+    "message": "Good [time] [firstName], and welcome to [company]! Room [roomNumber] is now ready for you. Enjoy your stay, and let us know if you need anything."
+  },
+  {
+    "messageId": "2",
+    "messageTitle": "reservationConfirmation",
+    "message": "Good [time] [firstName] [lastName], your reservation at [company] is confirmed! Your check in date and time is [checkIn]. We look forward to seeing you!"
+  },
+  {
+    "messageId": "3",
+    "messageTitle": "checkOutConfirmation",
+    "message": "Good [time] [firstName] [lastName], your check out date and time is [checkOut]. Thank you for staying with us!"
+  }
+]

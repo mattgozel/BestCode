@@ -1,0 +1,60 @@
+﻿@model MessageGeneration.UI.Models.CreateViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<br />
+<h2>Create Custom Template</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            Use the textbox below to type in a custom message. Then select the company you work for and the guest you wish to send the message to.
+        </p>
+        <p>
+            To use the template correctly, you can use these options to customize your message dynamically with information on your company and the guest (include brackets in your message).
+        </p>
+        <p>
+            Options:
+        </p>
+        <ul>
+            <li>[firstName] Auto-populates with the guests first name</li>
+            <li>[lastName] Auto-populates with guests last name</li>
+            <li>[company] Auto-populates with the name of your company</li>
+            <li>[roomNumber] Auto-populates with the room number of your guest</li>
+            <li>[checkIn] Auto-populates with the check in day and time for your guest</li>
+            <li>[checkOut] Auto-populates with the check out day and time for your guest</li>
+            <li>[time] Auto-populates with a greeting based on the time of day</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row bigbox">
+    <h2 class="col-md-12">Message</h2>
+    <br />
+    @if (Model.CreatedMessage != null)
+    {
+        <p>@Model.CreatedMessage</p>
+    }
+</div>
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post, new { id = "createMessage" }))
+{
+    @Html.ValidationSummary();
+<div class=" row">
+    <div class="col form-group">
+        <label>Company</label>
+        <p>@Html.DropDownList("SelectedCompanyId", new SelectList(Model.Companies, "Id", "Company"), new { @class = "w-100", required = "required" })</p>
+    </div>
+    <div class="col form-group">
+        <label>Guest</label>
+        <p>@Html.DropDownList("SelectedGuestId", new SelectList(Model.Guests, "Id", "LastName"), new { @class = "w-100", required = "required" })</p>
+    </div>
+</div>
+<div class="textareacontainer">
+    <p>@Html.TextAreaFor(m => m.CustomizedMessage, new { required = "required" })</p>
+</div>
+    <button class="btn btn-dark contactLink">View Message</button>
+}
+

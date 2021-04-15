@@ -1,0 +1,6 @@
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Models\bin\Release\MountainClimber.Models.dll
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Models\bin\Release\MountainClimber.Models.pdb
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Models\obj\Release\MountainClimber.Models.csprojAssemblyReference.cache
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Models\obj\Release\MountainClimber.Models.csproj.CoreCompileInputs.cache
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Models\obj\Release\MountainClimber.Models.dll
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Models\obj\Release\MountainClimber.Models.pdb

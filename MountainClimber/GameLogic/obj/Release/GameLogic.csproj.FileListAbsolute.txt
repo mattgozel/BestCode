@@ -1,0 +1,11 @@
+C:\Users\repub\source\repos\MountainClimber\GameLogic\bin\Release\GameLogic.dll
+C:\Users\repub\source\repos\MountainClimber\GameLogic\bin\Release\GameLogic.pdb
+C:\Users\repub\source\repos\MountainClimber\GameLogic\bin\Release\MountainClimber.Data.dll
+C:\Users\repub\source\repos\MountainClimber\GameLogic\bin\Release\MountainClimber.Models.dll
+C:\Users\repub\source\repos\MountainClimber\GameLogic\bin\Release\MountainClimber.Data.pdb
+C:\Users\repub\source\repos\MountainClimber\GameLogic\bin\Release\MountainClimber.Models.pdb
+C:\Users\repub\source\repos\MountainClimber\GameLogic\obj\Release\GameLogic.csprojAssemblyReference.cache
+C:\Users\repub\source\repos\MountainClimber\GameLogic\obj\Release\GameLogic.csproj.CoreCompileInputs.cache
+C:\Users\repub\source\repos\MountainClimber\GameLogic\obj\Release\GameLogic.csproj.CopyComplete
+C:\Users\repub\source\repos\MountainClimber\GameLogic\obj\Release\GameLogic.dll
+C:\Users\repub\source\repos\MountainClimber\GameLogic\obj\Release\GameLogic.pdb

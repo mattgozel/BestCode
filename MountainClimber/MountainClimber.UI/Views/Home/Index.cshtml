@@ -1,0 +1,223 @@
+﻿@model List<MountainClimber.Models.TableModels.MountainClimberProduct>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Mountain Climber</h1>
+    <p class="lead">Guess the prices close enough or you will kill a man!</p>
+</div>
+
+<div class="bigbox">
+    <br /><br /><br /><br /><br />
+    <div class="row">
+        <div class="col-12 text-center" id="stepCounter">
+        </div>
+    </div>
+    <br /><br /><br /><br /><br />
+</div>
+
+<br /><br />
+
+<div class="row" id="startGame">
+    <button class="btn btn-dark col-12 text-center carryLink" onclick="return startGame();">Start Game</button>
+</div>
+
+<div class="row">
+@{int i = 0;}
+@foreach (var item in Model)
+{
+    <div style="display:none">@(i++)</div>
+
+    <div class="bigbox col-4 text-center offset-4" style="display:none" id="@("product"+i)">
+        <img src="@Url.Content("~/Images/" + item.ImageFileName)" />
+        <p>@item.ProductName</p>
+        @Html.Hidden(item.ProductPrice.ToString(), item.ProductPrice, new { id = "price" + i })
+        <form>
+            <label>Price Guess: </label>
+            <input type="number" id="@("guess"+i)" />
+            <button class="btn btn-dark carryLink" id="@("guessBtn"+i)" onclick="@("return round"+i+"();")">Submit</button>
+        </form>
+    </div>
+}
+</div>
+
+@section Scripts
+{
+    <script>
+        function startGame() {
+            $('#startGame').hide();
+            $('#product1').show();
+            return false;
+        };
+
+         function round1() {
+            var priceVal = $('#price1').val();
+            var guessVal = $('#guess1').val();
+
+            if (guessVal.length == 0) {
+                alert("Guess cannot be empty!");
+                return false;
+            }
+
+            var price = parseInt(priceVal);
+            var guess = parseInt(guessVal);
+            var difference;
+
+            if (price > guess) {
+                difference = price - guess;
+            }
+            if (price < guess) {
+                difference = guess - price;
+            }
+            if (price == guess) {
+                difference = 0;
+             }
+
+             $('#guessBtn1').hide();
+
+            var increment = 0;
+             var count = setInterval(function () {
+                 if (increment > difference || increment > 25) {
+                     clearInterval(count);
+
+                     if (increment >= difference) {
+                         hideShow1();
+                         return false;
+                     }
+                     else {
+                         $('#stepCounter').empty();
+                         $('#stepCounter').html("YOU LOSE!");
+                         return false;
+                     }
+
+                }
+                $('#stepCounter').html(increment);
+                increment += 1;
+            }, 1000);
+
+            return false;
+        };
+
+        function hideShow1(){            
+            $('#product1').hide();
+            $('#product2').show();
+            $('#guessBtn2').show();
+        };
+
+        function round2() {
+            var priceVal = $('#price2').val();
+            var guessVal = $('#guess2').val();
+
+            if (guessVal.length == 0) {
+                alert("Guess cannot be empty!");
+                return false;
+            }
+
+            var price = parseInt(priceVal);
+            var guess = parseInt(guessVal);
+            var difference;
+
+            if (price > guess) {
+                difference = price - guess;
+            }
+            if (price < guess) {
+                difference = guess - price;
+            }
+            if (price == guess) {
+                difference = 0;
+            }
+
+            $('#guessBtn2').hide();
+
+            var stepValue = $('#stepCounter').text();
+            var increment = parseInt(stepValue);
+            var counter = 0;
+            var count = setInterval(function () {
+                if (counter > difference  || increment > 25) {
+                    clearInterval(count);
+
+                    if (counter >= difference) {
+                        hideShow2();
+                        return false;
+                    }
+                    if (increment > 25) {
+                        $('#stepCounter').empty();
+                        $('#stepCounter').html("YOU LOSE!");
+                        return false;
+                    }
+                }
+                $('#stepCounter').html(increment);
+                increment += 1;
+                counter += 1;
+            }, 1000);
+
+            return false;
+        };
+
+        function hideShow2() {
+            $('#product2').hide();
+            $('#product3').show();
+            $('#guessBtn3').show();
+        };
+
+        function round3() {
+            var priceVal = $('#price3').val();
+            var guessVal = $('#guess3').val();
+
+            if (guessVal.length == 0) {
+                alert("Guess cannot be empty!");
+                return false;
+            }
+
+            var price = parseInt(priceVal);
+            var guess = parseInt(guessVal);
+            var difference;
+
+            if (price > guess) {
+                difference = price - guess;
+            }
+            if (price < guess) {
+                difference = guess - price;
+            }
+            if (price == guess) {
+                difference = 0;
+            }
+
+            $('#guessBtn3').hide();
+
+            var stepValue = $('#stepCounter').text();
+            var increment = parseInt(stepValue);
+            var counter = 0;
+            var count = setInterval(function () {
+                if (counter > difference || increment > 25) {
+                    clearInterval(count);
+
+                    if (counter >= difference) {
+                        hideShow3();
+                        $('#stepCounter').empty();
+                        $('#stepCounter').html("YOU WIN!");
+                        return false;
+                    }
+
+                    if (increment > 25) {
+                        $('#stepCounter').empty();
+                        $('#stepCounter').html("YOU LOSE!");
+                        return false;
+                    }
+                }
+                $('#stepCounter').html(increment);
+                increment += 1;
+                counter += 1;
+            }, 1000);
+
+            return false;
+        };
+
+        function hideShow3() {
+            $('#product3').hide();
+        };
+
+    </script>
+}

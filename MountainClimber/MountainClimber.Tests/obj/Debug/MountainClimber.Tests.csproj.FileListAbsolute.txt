@@ -1,0 +1,17 @@
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\bin\Debug\MountainClimber.Tests.dll
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\bin\Debug\MountainClimber.Tests.pdb
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\bin\Debug\MountainClimber.Data.dll
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\bin\Debug\MountainClimber.Models.dll
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\bin\Debug\nunit.framework.dll
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\bin\Debug\MountainClimber.Data.pdb
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\bin\Debug\MountainClimber.Models.pdb
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\bin\Debug\nunit.framework.xml
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\obj\Debug\MountainClimber.Tests.csprojAssemblyReference.cache
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\obj\Debug\MountainClimber.Tests.csproj.CoreCompileInputs.cache
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\obj\Debug\MountainClimber.Tests.csproj.CopyComplete
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\obj\Debug\MountainClimber.Tests.dll
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\obj\Debug\MountainClimber.Tests.pdb
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\bin\Debug\GameLogic.dll
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\bin\Debug\GameLogic.pdb
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\bin\Debug\MountainClimber.Tests.dll.config
+C:\Users\repub\source\repos\MountainClimber\MountainClimber.Tests\bin\Debug\App.config
